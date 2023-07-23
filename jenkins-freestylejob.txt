@@ -47,3 +47,5 @@
 #ansible-playbook -i ./ansible/inventory/dynamic_inventory_aws_ec2.yaml -b ./ansible/playbooks/manager_join.yaml
 # Swarm Setup for Workers nodes
 #ansible-playbook -i ./ansible/inventory/dynamic_inventory_aws_ec2.yaml -b ./ansible/playbooks/worker_join.yaml
+
+# ---------------------
