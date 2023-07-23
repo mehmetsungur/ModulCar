@@ -59,3 +59,9 @@
 #ansible-playbook -i ./ansible/inventory/dynamic_inventory_aws_ec2.yaml -b ./ansible/playbooks/worker_join.yaml
 
 # ---------------------
+#mv ${CFN_KEY} /var/lib/jenkins/.ssh
+
+# ---------------------
+#chmod 400 /var/lib/jenkins/.ssh/${CFN_KEY}
+
+# ---------------------
