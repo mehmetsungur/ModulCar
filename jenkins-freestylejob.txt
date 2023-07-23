@@ -26,11 +26,24 @@
 #aws cloudformation create-stack --region ${AWS_REGION} --stack-name ${APP_STACK_NAME} --capabilities CAPABILITY_IAM --template-body file://${CFN_TEMPLATE} --parameters ParameterKey=KeyPairName,ParameterValue=${CFN_KEY}
 
 # ---------------------
-CFN_KEY="ms-modulcar"
-export ANSIBLE_PRIVATE_KEY_FILE=${CFN_KEY}
-export ANSIBLE_HOST_KEY_CHECKING=False
-APP_NAME="modulcar-car-rental-App-5"
-export APP_STACK_NAME="$APP_NAME-App-5"
-sed -i "s/APP_STACK_NAME/$APP_STACK_NAME/" ${WORKSPACE}/ansible/inventory/dynamic_inventory_aws_ec2.yaml
-cat ${WORKSPACE}/ansible/inventory/dynamic_inventory_aws_ec2.yaml
-ansible-inventory -v -i ${WORKSPACE}/ansible/inventory/dynamic_inventory_aws_ec2.yaml --graph
+#CFN_KEY="ms-modulcar"
+#APP_NAME="modulcar-car-rental"
+#APP_STACK_NAME="$APP_NAME-App-5"
+#export ANSIBLE_PRIVATE_KEY_FILE=${CFN_KEY}
+#export ANSIBLE_HOST_KEY_CHECKING=False
+#sed -i "s/APP_STACK_NAME/$APP_STACK_NAME/" ${WORKSPACE}/ansible/inventory/dynamic_inventory_aws_ec2.yaml
+#cat ${WORKSPACE}/ansible/inventory/dynamic_inventory_aws_ec2.yaml
+#ansible-inventory -v -i ${WORKSPACE}/ansible/inventory/dynamic_inventory_aws_ec2.yaml --graph
+
+# ---------------------
+#ansible all -i ${WORKSPACE}/ansible/inventory/dynamic_inventory_aws_ec2.yaml -m ping
+
+# ---------------------
+# Swarm Setup for all nodes (instances)
+#ansible-playbook -i ./ansible/inventory/dynamic_inventory_aws_ec2.yaml -b ./ansible/playbooks/setup_for_all.yaml
+# Swarm Setup for Grand Master node
+#ansible-playbook -i ./ansible/inventory/dynamic_inventory_aws_ec2.yaml -b ./ansible/playbooks/initialize_cluster.yaml
+# Swarm Setup for Other Managers nodes
+#ansible-playbook -i ./ansible/inventory/dynamic_inventory_aws_ec2.yaml -b ./ansible/playbooks/manager_join.yaml
+# Swarm Setup for Workers nodes
+#ansible-playbook -i ./ansible/inventory/dynamic_inventory_aws_ec2.yaml -b ./ansible/playbooks/worker_join.yaml
