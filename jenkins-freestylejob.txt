@@ -20,15 +20,15 @@
 # ---------------------
 #APP_NAME="modulcar-car-rental"
 #APP_STACK_NAME="$APP_NAME-App-${BUILD_NUMBER}"
-#CFN_KEY="ms-modulcar"
+#CFN_KEY="modulcar"
 #CFN_TEMPLATE="./Infrastructure/cfn-template.yaml"
 #AWS_REGION="us-east-1"
 #aws cloudformation create-stack --region ${AWS_REGION} --stack-name ${APP_STACK_NAME} --capabilities CAPABILITY_IAM --template-body file://${CFN_TEMPLATE} --parameters ParameterKey=KeyPairName,ParameterValue=${CFN_KEY}
 
 # ---------------------
-#CFN_KEY="ms-modulcar"
+#CFN_KEY="modulcar"
 #APP_NAME="modulcar-car-rental"
-#APP_STACK_NAME="$APP_NAME-App-5"
+#APP_STACK_NAME="$APP_NAME-App-23"
 #export ANSIBLE_PRIVATE_KEY_FILE=${CFN_KEY}
 #export ANSIBLE_HOST_KEY_CHECKING=False
 #sed -i "s/APP_STACK_NAME/$APP_STACK_NAME/" ${WORKSPACE}/ansible/inventory/dynamic_inventory_aws_ec2.yaml
@@ -36,6 +36,16 @@
 #ansible-inventory -v -i ${WORKSPACE}/ansible/inventory/dynamic_inventory_aws_ec2.yaml --graph
 
 # ---------------------
+#ansible all -i ${WORKSPACE}/ansible/inventory/dynamic_inventory_aws_ec2.yaml -m ping
+
+# ---------------------
+#CFN_KEY="modulcar.pem"
+#chmod 400 ${CFN_KEY}
+#APP_NAME="modulcar-car-rental"
+#APP_STACK_NAME="$APP_NAME-App-23"
+#export ANSIBLE_PRIVATE_KEY_FILE=${CFN_KEY}
+#export ANSIBLE_HOST_KEY_CHECKING=False
+#sed -i "s/APP_STACK_NAME/$APP_STACK_NAME/" ${WORKSPACE}/ansible/inventory/dynamic_inventory_aws_ec2.yaml
 #ansible all -i ${WORKSPACE}/ansible/inventory/dynamic_inventory_aws_ec2.yaml -m ping
 
 # ---------------------
