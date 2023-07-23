@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   ui:
-    image: "${IMAGE_TAG_FE}"
+    image: "mehmetsungur/modulcar-frontend:220723"
     deploy:
       replicas: 3
       update_config:
@@ -20,7 +20,7 @@ services:
     networks:
       - carrental-net
   app:
-    image: "${IMAGE_TAG_BE}"
+    image: "mehmetsungur/modulcar-backend:220723"
     deploy:
       replicas: 3
       update_config:
