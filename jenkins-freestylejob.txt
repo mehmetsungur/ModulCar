@@ -24,3 +24,4 @@ CFN_KEY="ms-modulcar"
 CFN_TEMPLATE="./Infrastructure/cfn-template.yaml"
 AWS_REGION="us-east-1"
 aws cloudformation create-stack --region ${AWS_REGION} --stack-name ${APP_STACK_NAME} --capabilities CAPABILITY_IAM --template-body file://${CFN_TEMPLATE} --parameters ParameterKey=KeyPairName,ParameterValue=${CFN_KEY}
+
