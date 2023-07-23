@@ -18,10 +18,19 @@
 #aws ec2 create-key-pair --region ${AWS_REGION} --key-name ${CFN_KEYPAIR} --query "KeyMaterial" --output text > ${CFN_KEYPAIR}
 
 # ---------------------
-APP_NAME="modulcar/car-rental"
-APP_STACK_NAME="$APP_NAME-App-${BUILD_NUMBER}"
-CFN_KEY="ms-modulcar"
-CFN_TEMPLATE="./Infrastructure/cfn-template.yaml"
-AWS_REGION="us-east-1"
-aws cloudformation create-stack --region ${AWS_REGION} --stack-name ${APP_STACK_NAME} --capabilities CAPABILITY_IAM --template-body file://${CFN_TEMPLATE} --parameters ParameterKey=KeyPairName,ParameterValue=${CFN_KEY}
+#APP_NAME="modulcar-car-rental"
+#APP_STACK_NAME="$APP_NAME-App-${BUILD_NUMBER}"
+#CFN_KEY="ms-modulcar"
+#CFN_TEMPLATE="./Infrastructure/cfn-template.yaml"
+#AWS_REGION="us-east-1"
+#aws cloudformation create-stack --region ${AWS_REGION} --stack-name ${APP_STACK_NAME} --capabilities CAPABILITY_IAM --template-body file://${CFN_TEMPLATE} --parameters ParameterKey=KeyPairName,ParameterValue=${CFN_KEY}
 
+# ---------------------
+CFN_KEY="ms-modulcar"
+export ANSIBLE_PRIVATE_KEY_FILE=${CFN_KEY}
+export ANSIBLE_HOST_KEY_CHECKING=False
+APP_NAME="modulcar-car-rental-App-5"
+export APP_STACK_NAME="$APP_NAME-App-5"
+sed -i "s/APP_STACK_NAME/$APP_STACK_NAME/" ${WORKSPACE}/ansible/inventory/dynamic_inventory_aws_ec2.yaml
+cat ${WORKSPACE}/ansible/inventory/dynamic_inventory_aws_ec2.yaml
+ansible-inventory -v -i ${WORKSPACE}/ansible/inventory/dynamic_inventory_aws_ec2.yaml --graph
