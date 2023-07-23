@@ -39,13 +39,13 @@
 #ansible all -i ${WORKSPACE}/ansible/inventory/dynamic_inventory_aws_ec2.yaml -m ping
 
 # ---------------------
-#CFN_KEY="modulcar.pem"
-#chmod 400 ${CFN_KEY}
-#APP_NAME="modulcar-car-rental"
-#APP_STACK_NAME="$APP_NAME-App-23"
-#export ANSIBLE_PRIVATE_KEY_FILE=${CFN_KEY}
-#export ANSIBLE_HOST_KEY_CHECKING=False
-#sed -i "s/APP_STACK_NAME/$APP_STACK_NAME/" ${WORKSPACE}/ansible/inventory/dynamic_inventory_aws_ec2.yaml
+CFN_KEY="modulcar.pem"
+chmod 400 ${CFN_KEY}
+APP_NAME="modulcar-car-rental"
+APP_STACK_NAME="$APP_NAME-App-23"
+export ANSIBLE_PRIVATE_KEY_FILE=${CFN_KEY}
+export ANSIBLE_HOST_KEY_CHECKING=False
+sed -i "s/APP_STACK_NAME/$APP_STACK_NAME/" ${WORKSPACE}/ansible/inventory/dynamic_inventory_aws_ec2.yaml
 #ansible all -i ${WORKSPACE}/ansible/inventory/dynamic_inventory_aws_ec2.yaml -m ping
 
 # ---------------------
@@ -65,3 +65,4 @@
 #chmod 400 /var/lib/jenkins/.ssh/${CFN_KEY}
 
 # ---------------------
+ansible-playbook -b ./ansible/playbooks/deploy_app_on_cluster.yaml
