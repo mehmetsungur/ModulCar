@@ -10,10 +10,10 @@ services:
     ports:
       - "80:3000"
     labels:
-      kompose.service.expose: "carrental.msukrualev.link"
+      kompose.service.expose: "carrental.modulcar.xyz"
       kompose.service.type: "nodeport"
     environment: 
-      - APP_URL=http://carrental.msukrualev.link:8080/car-rental/api/
+      - APP_URL=http://carrental.modulcar.xyz:8080/car-rental/api/
 
   app:
     image: IMAGE_TAG_API
